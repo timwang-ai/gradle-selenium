@@ -1,0 +1,42 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'application'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+application {
+    mainClassName = 'com.selenum.DemoApplication'
+}
+
+ext {
+    slf4jApiVersion = '1.7.30'
+    lombokVersion = '1.18.16'
+    log4jApiCoreVersion = '2.13.3'
+}
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    implementation("org.slf4j:slf4j-api:${slf4jApiVersion}")
+    implementation("org.projectlombok:lombok:${lombokVersion}")
+    implementation("org.apache.logging.log4j:log4j-api:${log4jApiCoreVersion}")
+    implementation("org.apache.logging.log4j:log4j-core:${log4jApiCoreVersion}")
+
+    annotationProcessor("org.projectlombok:lombok:${lombokVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
